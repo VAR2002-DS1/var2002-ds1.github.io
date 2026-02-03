@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Nivashini ❤️</title>
+<title>Nivashini ❤️</title>
 <style>
 body {
   margin: 0;
@@ -19,31 +19,68 @@ body {
   border-radius: 20px;
   text-align: center;
   color: white;
-  max-width: 320px;
-}
-.card img {
-  width: 100%;
-  border-radius: 15px;
-  margin-bottom: 15px;
 }
 button {
-  padding: 10px 20px;
-  font-size: 1rem;
+  margin: 10px;
+  padding: 12px 25px;
+  font-size: 1.1rem;
   border: none;
-  border-radius: 20px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+#yesBtn {
   background: white;
   color: #ff4e78;
-  cursor: pointer;
+}
+#noBtn {
+  background: #ff2e63;
+  color: white;
 }
 </style>
 </head>
 
 <body>
 <div class="card">
-  <img src="photo.jpg" alt="Us ❤️">
   <h1>Nivashini 💕</h1>
   <p>Will you be my Valentine?</p>
-  <button onclick="alert('YAY ❤️ I’m so happy!')">Yes 💖</button>
+  <button id="yesBtn" onclick="yesClick()">Yes 💖</button>
+  <button id="noBtn" onclick="noClick()">No 😢</button>
 </div>
+
+<script>
+let noCount = 0;
+let yesSize = 1;
+let noSize = 1;
+
+function noClick() {
+  noCount++;
+  yesSize += 0.2;
+  noSize -= 0.2;
+
+  document.getElementById("yesBtn").style.transform =
+    `scale(${yesSize})`;
+
+  if (noCount >= 5) {
+    document.getElementById("noBtn").style.display = "none";
+  } else {
+    document.getElementById("noBtn").style.transform =
+      `scale(${noSize})`;
+  }
+}
+
+function yesClick() {
+  document.body.innerHTML = `
+    <div style="
+      color:white;
+      text-align:center;
+      font-family:Arial;
+    ">
+      <h1>YAY!!! ❤️😍</h1>
+      <p>I knew you'd say yes 💕</p>
+    </div>
+  `;
+}
+</script>
+
 </body>
 </html>
